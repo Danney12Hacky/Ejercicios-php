@@ -41,11 +41,11 @@ while(true){
             if ($retirar <= $sueldo) { // para verificar que haya suficiente dinero en la cuenta
                 $sueldo -= $retirar; // se resta la cantidad de dinero que se desea retirar al saldo
                 echo "¡Retiro fue exitoso!"."\n";
-                echo "Le quedan ".$sueldo. " En su cuenta."."\n";
+                echo "Le quedan $".$sueldo. " En su cuenta."."\n";
             } else {
                 echo "No tiene suficiente saldo para realizar el retiro."."\n";
             }
-        }   echo "...Gracias por hacer uso de nuestros servicios...";
+        }       echo "...Gracias por hacer uso de nuestros servicios...";
         retirar_dinero();
        
     }
