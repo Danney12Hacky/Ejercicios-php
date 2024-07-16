@@ -1,5 +1,7 @@
 <?php
-       
+
+$sueldo = 2000000;
+
 while(true){
     echo "\n"."---MENU PRINCIPAL---"."\n";
     echo "1. Consultar sueldo"."\n";
@@ -10,33 +12,42 @@ while(true){
     $opcion = (readline("Seleccione una opción: "));
     if ($opcion==1){
         function consultar_sueldo(){
-            $sueldo=2000000;
+            global $sueldo;
             $nombre= readline("Ingrese su nombre: ");
             $contraseña= intval(readline("Ingrese su contraseña: "));
-            echo $nombre ." usted tiene ".$sueldo." en su cuenta";
+            echo $nombre ." usted tiene ".$sueldo." en su cuenta". "\n";
+            echo "...Gracias por hacer uso de nuestros servicios...";
         }
         consultar_sueldo();
+       
     }
     elseif($opcion==2){
         function consignar_dinero(){
-            $sueldo=2000000;
+            global $sueldo;
             $contraseña = intval(readline("Ingrese su contraseña: "));
             $consignar = intval(readline("¿Cuanto dinero desea consignar? "));
-            $acomulado = $sueldo + $consignar;
-            echo "Consignación fue exitosa";
+            $sueldo += $consignar;//sumar el dinero consigado a sueldo
+            echo "¡¡Consignación exitosa!!". "\n";
+            echo "...Gracias por hacer uso de nuestros servicios...";
         }
         consignar_dinero();
+        
     }
     elseif ($opcion ==3){
         function retirar_dinero(){
-            $acomulado=2400000;
+            global $sueldo;
             $contraseña = intval(readline("Ingrese su contraseña: "));
             $retirar = intval(readline("¿Cuanto dinero desea retirar?" ));
-            $acomulado2 = $acomulado - $retirar;
-            echo "¡Retiro fue exitoso!"."\n";
-            echo "Le quedan ".$acomulado2. " En su cuenta.";
-        }   
+            if ($retirar <= $sueldo) { // para verificar que haya suficiente dinero en la cuenta
+                $sueldo -= $retirar; // se resta la cantidad de dinero que se desea retirar al saldo
+                echo "¡Retiro fue exitoso!"."\n";
+                echo "Le quedan ".$sueldo. " En su cuenta."."\n";
+            } else {
+                echo "No tiene suficiente saldo para realizar el retiro."."\n";
+            }
+        }   echo "...Gracias por hacer uso de nuestros servicios...";
         retirar_dinero();
+       
     }
     elseif($opcion ==4){
         echo "Saliendo del programa...";
